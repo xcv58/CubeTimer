@@ -16,24 +16,32 @@ class Page extends React.Component {
   onKeyDown = (event) => {
     if (isSpace(event)) {
       event.preventDefault()
-      const { store: { running, prepare, toggle, lapse } } = this.props
-      const { recordsStore: { newRecord } } = this.props
-      if (running) {
-        newRecord(lapse, Date.now())
-        toggle()
-      } else {
-        prepare()
-      }
+      this.onTouchStart()
     }
   }
 
   onKeyUp = (event) => {
     if (isSpace(event)) {
       event.preventDefault()
-      const { store: { toggle, standby } } = this.props
-      if (standby) {
-        toggle()
-      }
+      this.onTouchEnd()
+    }
+  }
+
+  onTouchStart = () => {
+    const { store: { running, prepare, toggle, lapse } } = this.props
+    const { recordsStore: { newRecord } } = this.props
+    if (running) {
+      newRecord(lapse, Date.now())
+      toggle()
+    } else {
+      prepare()
+    }
+  }
+
+  onTouchEnd = () => {
+    const { store: { toggle, standby } } = this.props
+    if (standby) {
+      toggle()
     }
   }
 
@@ -48,7 +56,9 @@ class Page extends React.Component {
         minHeight: '61vh',
         justifyContent: 'center',
         alignItems: 'center'
-      }}>
+      }}
+        onTouchStart={this.onTouchStart}
+        onTouchEnd={this.onTouchEnd} >
         <div onClick={toggle}>
           <StopWatch {...store} />
         </div>
