@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'mobx-react'
 import { initStore, initRecordsStore } from '../stores'
 import Page from '../components/Page'
+import '../libs/offline-install'
 
 export default class Counter extends React.Component {
   static getInitialProps ({ req }) {
