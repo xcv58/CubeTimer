@@ -1,4 +1,4 @@
-const pad = n => n < 10 ? `0${n}` : n
+const pad = n => n < 10 ? `0${n}` : `${n}`
 
 export const getTimeObj = (lapse) => {
   const millisecond = pad(Math.floor((lapse % 1000) / 10))
@@ -7,4 +7,4 @@ export const getTimeObj = (lapse) => {
   return { minute, second, millisecond }
 }
 
-export const isSpace = (event) => event.which === 32
+export const isSpace = (event = {}) => event.which === 32
