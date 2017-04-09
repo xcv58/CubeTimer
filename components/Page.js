@@ -11,6 +11,13 @@ class Page extends React.Component {
   componentDidMount () {
     document.addEventListener('keydown', this.onKeyDown)
     document.addEventListener('keyup', this.onKeyUp)
+    document.documentElement.addEventListener('touchend', this.onTouchEnd, true)
+    document.documentElement.addEventListener('touchstart', (event) => {
+      if (event.touches.length > 1) {
+        event.preventDefault()
+      }
+      this.onTouchStart(event)
+    }, true)
   }
 
   onKeyDown = (event) => {
@@ -53,12 +60,10 @@ class Page extends React.Component {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100vh',
+        minHeight: '89vh',
         justifyContent: 'center',
         alignItems: 'center'
-      }}
-        onTouchStart={this.onTouchStart}
-        onTouchEnd={this.onTouchEnd} >
+      }}>
         <div onClick={toggle}>
           <StopWatch {...store} />
         </div>
