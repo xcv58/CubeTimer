@@ -6,11 +6,11 @@ import Time from './Time'
 @observer
 class StopWatch extends React.Component {
   render () {
-    const { lapse } = this.props
-
+    const { lapse, running } = this.props
     return (
       <div style={{
-        font: '5rem menlo, monaco, monospace'
+        font: '5rem menlo, monaco, monospace',
+        color: running ? 'red' : 'black'
       }}>
         <Time {...getTimeObj(lapse)} />
       </div>

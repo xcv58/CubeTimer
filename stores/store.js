@@ -4,11 +4,10 @@ let store = null
 
 class Store {
   @observable running = false
+  @observable standby = false
+  @observable startTime = 0
   @observable lapse = 0
   @observable records = []
-  @observable startTime = 0
-
-  @observable standby = false
 
   @action toggle = () => {
     if (this.running) {
@@ -31,10 +30,12 @@ class Store {
   stop = () => {
     this.running = false
     clearInterval(this.timer)
+    this.records.push(this.lapse)
   }
 
   prepare = () => {
     this.standby = true
+    this.lapse = 0
   }
 }
 

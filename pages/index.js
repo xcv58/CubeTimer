@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'mobx-react'
-import { initStore } from '../store'
+import { initStore, initRecordsStore } from '../stores'
 import Page from '../components/Page'
 
 export default class Counter extends React.Component {
@@ -12,11 +12,12 @@ export default class Counter extends React.Component {
   constructor (props) {
     super(props)
     this.store = initStore(props.isServer)
+    this.recordsStore = initRecordsStore(props.isServer)
   }
 
   render () {
     return (
-      <Provider store={this.store}>
+      <Provider store={this.store} recordsStore={this.recordsStore} >
         <Page />
       </Provider>
     )
