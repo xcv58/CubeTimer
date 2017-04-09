@@ -53,7 +53,7 @@ class Page extends React.Component {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '61vh',
+        minHeight: '100vh',
         justifyContent: 'center',
         alignItems: 'center'
       }}
