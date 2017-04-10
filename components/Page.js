@@ -13,6 +13,7 @@ class Page extends React.Component {
     document.addEventListener('keyup', this.onKeyUp)
     document.documentElement.addEventListener('touchend', this.onTouchEnd, true)
     document.documentElement.addEventListener('touchstart', (event) => {
+      // This is preventing zoom out in iOS Safari
       if (event.touches.length > 1) {
         event.preventDefault()
       }
