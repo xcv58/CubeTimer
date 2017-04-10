@@ -3595,9 +3595,9 @@ mobx-stored@^0.9.6:
     lodash.omit "^4.5.0"
     traverse "^0.6.6"
 
-mobx@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-2.7.0.tgz#cf3d82d18c0ca7f458d8f2a240817b3dc7e54a01"
+mobx@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.1.9.tgz#ed4af9d874ff6032c7af91fc1b87d9d33122a557"
 
 moment@^2.11.2:
   version "2.18.1"
