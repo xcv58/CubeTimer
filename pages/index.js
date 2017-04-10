@@ -18,7 +18,7 @@ export default class Counter extends React.Component {
 
   render () {
     return (
-      <Provider store={this.store} recordsStore={this.recordsStore} >
+      <Provider store={this.store} recordsStore={this.recordsStore}>
         <Page />
       </Provider>
     )

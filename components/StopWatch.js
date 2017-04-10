@@ -1,12 +1,13 @@
 import React from 'react'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { getTimeObj } from '../libs/utils'
 import Time from './Time'
 
+@inject('store')
 @observer
 class StopWatch extends React.Component {
   render () {
-    const { lapse, running } = this.props
+    const { lapse, running } = this.props.store
     return (
       <div style={{
         font: '5rem menlo, monaco, monospace',

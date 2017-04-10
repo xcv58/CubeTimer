@@ -65,7 +65,7 @@ class Page extends React.Component {
         alignItems: 'center'
       }}>
         <div onClick={toggle}>
-          <StopWatch {...store} />
+          <StopWatch />
         </div>
         {/* <Records {...{ records, max, min, average }} /> */}
       </div>
