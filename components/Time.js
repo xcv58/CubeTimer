@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default ({minute, second, millisecond}) => (
   <div style={{
     display: 'inline-block',

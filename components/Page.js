@@ -54,8 +54,7 @@ class Page extends React.Component {
 
   render () {
     const { store } = this.props
-    const { toggle, isServer } = store
-    // const { recordsStore: { records, max, min, average } } = this.props
+    const { isServer } = store
     // TODO: render meaningful information for server side rendering, new UI design needed.
     if (isServer) {
       return (<div />)
@@ -68,10 +67,8 @@ class Page extends React.Component {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <div onClick={toggle}>
-          <StopWatch />
-        </div>
-        {/* <Records {...{ records, max, min, average }} /> */}
+        <StopWatch />
+        {/* <Records /> */}
       </div>
     )
   }

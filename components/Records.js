@@ -1,4 +1,5 @@
 import React from 'react'
+import { inject, observer } from 'mobx-react'
 import { getTimeObj } from '../libs/utils'
 import Time from './Time'
 
@@ -13,9 +14,11 @@ const Record = ({ title, record }) => {
   )
 }
 
-export default class Records extends React.Component {
+@inject('recordsStore')
+@observer
+class Records extends React.Component {
   render () {
-    const { records, max, min, average } = this.props
+    const { records, max, min, average } = this.props.recordsStore
     const list = records.map(({ lapse }, i) => (
       <Time key={i} {...getTimeObj(lapse)} />
     ))
@@ -33,3 +36,5 @@ export default class Records extends React.Component {
     )
   }
 }
+
+export default Records

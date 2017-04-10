@@ -50,7 +50,7 @@ export function initStore (isServer) {
   if (isServer && typeof window === 'undefined') {
     return new Store(isServer)
   } else {
-    if (observableProfile === null) {
+    if (observableProfile === null && typeof localStorage !== 'undefined') {
       observableProfile = storedObservable('profile', defaultProfile, 500)
     }
     if (store === null) {

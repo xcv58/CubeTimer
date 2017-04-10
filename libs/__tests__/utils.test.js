@@ -86,11 +86,12 @@ describe('getTimeObj', () => {
 describe('isSpace', () => {
   it('would not crash', () => {
     expect(isSpace()).toBe(false)
+    expect(isSpace({})).toBe(false)
   })
 
   it('check is space', () => {
     const event = { which: 32 }
     expect(isSpace(event)).toBe(true)
-    expect(isSpace({})).toBe(false)
+    expect(isSpace({ which: 42 })).toBe(false)
   })
 })
