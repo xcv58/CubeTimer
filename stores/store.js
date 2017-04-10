@@ -7,6 +7,10 @@ let store = null
 let observableProfile = null
 
 class Store {
+  constructor (isServer) {
+    this.isServer = isServer
+  }
+
   @observable running = false
   @observable standby = false
   @observable startTime = 0
@@ -50,7 +54,7 @@ export function initStore (isServer) {
       observableProfile = storedObservable('profile', defaultProfile, 500)
     }
     if (store === null) {
-      store = new Store(isServer)
+      store = new Store(false)
     }
     return store
   }

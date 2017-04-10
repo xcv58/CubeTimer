@@ -4,7 +4,7 @@ import { initStore, initRecordsStore } from '../stores'
 import Page from '../components/Page'
 import '../libs/offline-install'
 
-export default class Counter extends React.Component {
+export default class CubeTimer extends React.Component {
   static getInitialProps ({ req }) {
     const isServer = !!req
     return { isServer }

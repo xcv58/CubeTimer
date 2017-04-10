@@ -54,8 +54,12 @@ class Page extends React.Component {
 
   render () {
     const { store } = this.props
-    const { toggle } = store
+    const { toggle, isServer } = store
     // const { recordsStore: { records, max, min, average } } = this.props
+    // TODO: render meaningful information for server side rendering, new UI design needed.
+    if (isServer) {
+      return (<div />)
+    }
     return (
       <div style={{
         display: 'flex',
