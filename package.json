@@ -7,8 +7,9 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "test": "jest",
-    "test-watch": "npm run test -- --watch",
+    "test": "npm run lint && npm run testonly",
+    "testonly": "jest",
+    "test-watch": "npm run testonly -- --watch",
     "lintfix": "npm run lint -- --fix",
     "lint": "standard"
   },
