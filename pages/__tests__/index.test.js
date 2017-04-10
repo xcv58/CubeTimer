@@ -16,4 +16,9 @@ describe('CubeTimer', () => {
     expect(el.find(Provider).length).toBe(1)
     expect(el.find(Page).length).toBe(1)
   })
+
+  it('getInitialProps return { isServer }', () => {
+    expect(CubeTimer.getInitialProps({})).toEqual({ isServer: false })
+    expect(CubeTimer.getInitialProps({ req: true })).toEqual({ isServer: true })
+  })
 })
