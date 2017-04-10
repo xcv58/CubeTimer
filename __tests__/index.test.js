@@ -1,7 +1,7 @@
 /* global it, expect, describe */
 import React from 'react'
-import CubeTimer from '../index'
-import Page from '../../components/Page'
+import CubeTimer from '../pages/index'
+import Page from '../components/Page'
 import { Provider } from 'mobx-react'
 import { shallow } from 'enzyme'
 
