@@ -1,7 +1,7 @@
 {
   "name": "Cube Timer",
   "theme_color": "#FFF",
-  "background_color": "#FFF",
+  "background_color": "#F5F5F5",
   "icons": [
     {
       "src": "Icon-120.png",
