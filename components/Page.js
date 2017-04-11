@@ -54,12 +54,7 @@ class Page extends React.Component {
   }
 
   render () {
-    const { store } = this.props
-    const { isServer } = store
     // TODO: render meaningful information for server side rendering, new UI design needed.
-    if (isServer) {
-      return (<div />)
-    }
     return (
       <div style={{
         display: 'flex',

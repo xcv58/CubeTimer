@@ -6,13 +6,14 @@ import { getTimeObj } from '../libs/utils'
 @observer
 class StopWatch extends React.Component {
   render () {
-    const { lapse, running } = this.props.store
+    const { lapse, running, isServer } = this.props.store
     const { minute, second, millisecond } = getTimeObj(lapse)
+    const value = isServer ? '...' : `${minute}:${second}:${millisecond}`
     return (
       <div style={{
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px'
       }}>
-        <input disabled value={`${minute}:${second}:${millisecond}`}
+        <input disabled value={value}
           style={{
             color: running ? 'red' : 'black',
             font: '3rem menlo, monaco, monospace',

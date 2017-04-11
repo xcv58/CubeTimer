@@ -15,15 +15,9 @@ describe('Page', () => {
     expect(typeof instance.onTouchEnd).toBe('function')
   })
 
-  it('honor isServer', () => {
-    const store = { isServer: true }
-    let el = shallow(<Page store={store} />)
-    expect(el.find('div').length).toBe(1)
-    expect(el.text()).toBe('')
-
-    store.isServer = false
-    store.lapse = 1000
-    el = shallow(<Page store={store} />)
+  it('render StopWatch', () => {
+    const store = {}
+    const el = shallow(<Page store={store} />)
     expect(el.find(StopWatch).length).toBe(1)
   })
 })
