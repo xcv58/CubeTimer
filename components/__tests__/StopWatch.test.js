@@ -11,15 +11,16 @@ describe('StopWatch', () => {
   })
 
   it('render running status', () => {
-    const store = {
-      running: true
-    }
+    const store = { running: true }
+    const getTarget = el => el.find('div > div')
     let el = shallow(<StopWatch store={store} />)
-    expect(el.find('div > div').is({ style: { color: 'red' } })).toBe(true)
+
+    expect(getTarget(el).is({ style: { color: 'red' } })).toBe(true)
 
     store.running = false
     el = shallow(<StopWatch store={store} />)
-    expect(el.find('div > div').is({ style: { color: 'black' } })).toBe(true)
+
+    expect(getTarget(el).is({ style: { color: 'black' } })).toBe(true)
   })
 
   it('render correct time', () => {
