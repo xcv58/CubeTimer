@@ -59,9 +59,9 @@ class Page extends React.Component {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '89vh',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingTop: '10%'
       }}>
         <StopWatch />
         {/* <Records /> */}
