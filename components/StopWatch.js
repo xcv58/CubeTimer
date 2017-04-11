@@ -13,17 +13,17 @@ class StopWatch extends React.Component {
       <div style={{
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px'
       }}>
-        <input disabled value={value}
-          style={{
-            color: running ? 'red' : 'black',
-            font: '3rem menlo, monaco, monospace',
-            width: '5.5em',
-            padding: '1rem',
-            userSelect: 'none',
-            textAlign: 'center',
-            border: 'none'
-          }}
-        />
+        <div style={{
+          background: '#FFF',
+          color: running ? 'red' : 'black',
+          font: '3rem menlo, monaco, monospace',
+          width: '5.5em',
+          padding: '1rem',
+          userSelect: 'none',
+          textAlign: 'center'
+        }}>
+          {value}
+        </div>
       </div>
     )
   }
