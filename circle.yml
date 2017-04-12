@@ -7,6 +7,7 @@ machine:
 dependencies:
   override:
     - yarn
+    - now
   cache_directories:
     - ~/.cache/yarn
 
@@ -15,3 +16,4 @@ test:
     - yarn test
     - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN ./node_modules/.bin/codeclimate-test-reporter < coverage/lcov.info
     - yarn build
+    - now
