@@ -12,8 +12,9 @@ class Page extends React.Component {
   componentDidMount () {
     document.addEventListener('keydown', this.onKeyDown)
     document.addEventListener('keyup', this.onKeyUp)
-    document.documentElement.addEventListener('touchend', this.onTouchEnd, true)
-    document.documentElement.addEventListener('touchstart', (event) => {
+    document.addEventListener('touchcancel', this.onTouchCancel, true)
+    document.addEventListener('touchend', this.onTouchEnd, true)
+    document.addEventListener('touchstart', (event) => {
       // This is preventing zoom out in iOS Safari
       if (event.touches.length > 1) {
         event.preventDefault()
@@ -45,6 +46,10 @@ class Page extends React.Component {
 
   onTouchEnd = () => {
     this.release()
+  }
+
+  onTouchCancel = () => {
+    this.props.store.cancel()
   }
 
   hold = () => {

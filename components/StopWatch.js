@@ -6,7 +6,7 @@ import { getTimeObj } from '../libs/utils'
 @observer
 class StopWatch extends React.Component {
   render () {
-    const { lapse, running, isServer } = this.props.store
+    const { lapse, running, standby, isServer } = this.props.store
     const { minute, second, millisecond } = getTimeObj(lapse)
     const value = isServer ? '...' : `${minute}:${second}:${millisecond}`
     return (
@@ -15,11 +15,12 @@ class StopWatch extends React.Component {
       }}>
         <div style={{
           background: '#FFF',
-          color: running ? 'red' : 'black',
+          color: (running || standby) ? 'red' : 'black',
           font: '3rem menlo, monaco, monospace',
           width: '5.5em',
           padding: '1rem',
           userSelect: 'none',
+          WebkitUserSelect: 'none',
           textAlign: 'center'
         }}>
           {value}

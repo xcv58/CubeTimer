@@ -25,6 +25,7 @@ class Store {
   }
 
   @action start = () => {
+    this.lapse = 0
     this.startTime = Date.now()
     this.running = true
     this.standby = false
@@ -34,15 +35,18 @@ class Store {
     }, 10)
   }
 
-  stop = () => {
+  @action stop = () => {
     this.running = false
     clearInterval(this.timer)
     observableProfile.lapse = this.lapse
   }
 
-  prepare = () => {
+  @action prepare = () => {
     this.standby = true
-    this.lapse = 0
+  }
+
+  @action cancel = () => {
+    this.standby = false
   }
 }
 
