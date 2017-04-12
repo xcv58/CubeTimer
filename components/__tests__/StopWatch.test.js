@@ -23,6 +23,13 @@ describe('StopWatch', () => {
     expect(getTarget(el).is({ style: { color: 'black' } })).toBe(true)
   })
 
+  it('render ... for SSR', () => {
+    const store = { lapse: Math.random(), isServer: true }
+    const el = shallow(<StopWatch store={store} />)
+
+    expect(el.text()).toBe('...')
+  })
+
   it('render correct time', () => {
     const store = { lapse: Math.random() }
     const el = shallow(<StopWatch store={store} />)
