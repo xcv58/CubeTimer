@@ -2,6 +2,7 @@ import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { isSpace } from '../libs/utils'
 import StopWatch from './StopWatch'
+import ReactDOM from 'react-dom'
 // import Records from './Records'
 
 @inject('store')
@@ -24,18 +25,29 @@ class Page extends React.Component {
   onKeyDown = (event) => {
     if (isSpace(event)) {
       event.preventDefault()
-      this.onTouchStart()
+      this.hold()
     }
   }
 
   onKeyUp = (event) => {
     if (isSpace(event)) {
       event.preventDefault()
-      this.onTouchEnd()
+      this.release()
     }
   }
 
-  onTouchStart = () => {
+  onTouchStart = (event) => {
+    const res = ReactDOM.findDOMNode(this.refs.stopwatch)
+    if (!res.contains(event.target)) {
+      this.hold()
+    }
+  }
+
+  onTouchEnd = () => {
+    this.release()
+  }
+
+  hold = () => {
     const { store: { running, prepare, toggle, lapse } } = this.props
     const { recordsStore: { newRecord } } = this.props
     if (running) {
@@ -46,7 +58,7 @@ class Page extends React.Component {
     }
   }
 
-  onTouchEnd = () => {
+  release = () => {
     const { store: { toggle, standby } } = this.props
     if (standby) {
       toggle()
@@ -63,7 +75,7 @@ class Page extends React.Component {
         alignItems: 'center',
         paddingTop: '10%'
       }}>
-        <StopWatch />
+        <StopWatch ref='stopwatch' />
         {/* <Records /> */}
       </div>
     )
