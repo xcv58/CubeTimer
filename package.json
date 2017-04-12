@@ -7,6 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
+    "deploy": "now --token=$CODECLIMATE_REPO_TOKEN",
     "test": "npm run lint && npm run testonly",
     "testonly": "jest",
     "test-watch": "npm run testonly -- --watch",
@@ -32,6 +33,7 @@
     "codeclimate-test-reporter": "^0.4.1",
     "enzyme": "^2.8.0",
     "jest": "^19.0.2",
+    "now": "^4.11.1",
     "react-addons-test-utils": "^15.5.1",
     "standard": "^10.0.1",
     "sw-precache-webpack-plugin": "^0.9.1"
