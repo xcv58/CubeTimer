@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --token=$CODECLIMATE_REPO_TOKEN",
+    "deploy": "now --token=$NOW_TOKEN",
     "test": "npm run lint && npm run testonly",
     "testonly": "jest",
     "test-watch": "npm run testonly -- --watch",
