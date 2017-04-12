@@ -2,6 +2,7 @@
 import React from 'react'
 import Page from '../Page'
 import StopWatch from '../StopWatch'
+import Records from '../Records'
 import { shallow } from 'enzyme'
 
 describe('Page', () => {
@@ -19,5 +20,11 @@ describe('Page', () => {
     const store = {}
     const el = shallow(<Page store={store} />)
     expect(el.find(StopWatch).length).toBe(1)
+  })
+
+  it('render Records', () => {
+    const store = {}
+    const el = shallow(<Page store={store} />)
+    expect(el.find(Records).length).toBe(1)
   })
 })

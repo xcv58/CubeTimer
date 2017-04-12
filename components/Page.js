@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react'
 import { isSpace } from '../libs/utils'
 import StopWatch from './StopWatch'
 import ReactDOM from 'react-dom'
-// import Records from './Records'
+import Records from './Records'
 
 @inject('store')
 @inject('recordsStore')
@@ -38,7 +38,7 @@ class Page extends React.Component {
   }
 
   onTouchStart = (event) => {
-    const res = ReactDOM.findDOMNode(this.refs.stopwatch)
+    const res = ReactDOM.findDOMNode(this.refs.content)
     if (!res.contains(event.target)) {
       this.hold()
     }
@@ -78,10 +78,15 @@ class Page extends React.Component {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: '10%'
+        paddingTop: '8%'
       }}>
-        <StopWatch ref='stopwatch' />
-        {/* <Records /> */}
+        <div ref='content'
+          style={{
+            boxShadow: 'rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px'
+          }}>
+          <StopWatch />
+          <Records />
+        </div>
       </div>
     )
   }

@@ -12,7 +12,7 @@ describe('StopWatch', () => {
 
   it('render highlight color when (running || standby) === true', () => {
     const store = { running: true, standby: true }
-    const getTarget = el => el.find('div > div')
+    const getTarget = el => el.find('div')
     let el = shallow(<StopWatch store={store} />)
 
     expect(getTarget(el).is({ style: { color: 'red' } })).toBe(true)

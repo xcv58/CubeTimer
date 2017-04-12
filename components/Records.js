@@ -1,15 +1,22 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import { getTimeObj } from '../libs/utils'
-import Time from './Time'
 
-const Record = ({ title, record }) => {
-  if (!record || !record.lapse) {
-    return null
+const getStyle = ({ min, max, lapse }) => {
+  const isMin = min === lapse
+  const isMax = max === lapse
+  if (isMin && !isMax) {
+    return { color: 'black' }
   }
+}
+
+const Record = ({ lapse, timestamp, min, max, index }) => {
+  const { minute, second, millisecond } = getTimeObj(lapse)
+  const value = `${minute}:${second}:${millisecond}`
   return (
-    <div>
-      {title}: <Time {...getTimeObj(record.lapse)} />
+    <div className='timebar' style={getStyle({ min, max, lapse })}>
+      <span style={{ float: 'left', width: 0 }}>{index}</span>
+      {value}
     </div>
   )
 }
@@ -18,19 +25,21 @@ const Record = ({ title, record }) => {
 @observer
 class Records extends React.Component {
   render () {
-    const { records, max, min, average } = this.props.recordsStore
-    const list = records.map(({ lapse }, i) => (
-      <Time key={i} {...getTimeObj(lapse)} />
+    const { records, min, max } = this.props.recordsStore
+    const length = records.length
+    const list = records.map((record, i) => (
+      <Record key={record.timestamp} {...{ min, max, index: length - i }} {...record} />
     ))
     return (
       <div style={{
+        maxHeight: '10rem',
+        overflow: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        borderTop: '1px solid #ededed',
+        alignItems: 'center',
+        boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2)'
       }}>
-        <Record title='Best' record={min} />
-        <Record title='Worst' record={max} />
-        <Record title='Average' record={{ lapse: average }} />
         {list}
       </div>
     )
