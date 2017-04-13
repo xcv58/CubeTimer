@@ -78,7 +78,7 @@ class Page extends React.Component {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: '8%'
+        padding: '1rem'
       }}>
         <div ref='content'
           style={{
