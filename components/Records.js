@@ -32,7 +32,7 @@ class Records extends React.Component {
     ))
     return (
       <div style={{
-        maxHeight: '10rem',
+        maxHeight: '50vh',
         overflow: 'auto',
         display: 'flex',
         flexDirection: 'column',
