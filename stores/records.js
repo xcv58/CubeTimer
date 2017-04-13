@@ -18,6 +18,13 @@ class RecordsStore {
     this.updateLocalProfile(record)
   }
 
+  @action clear = () => {
+    this.records = []
+    this.max = 0
+    this.min = Infinity
+    this.updateLocalProfile()
+  }
+
   updateLocalProfile = () => {
     const { min, max, records } = this
     LocalProfile.assign({ min, max, records })

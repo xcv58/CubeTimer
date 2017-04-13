@@ -82,6 +82,8 @@ class Page extends React.Component {
       }}>
         <div ref='content'
           style={{
+            background: '#FFF',
+            color: '#d9d9d9',
             boxShadow: 'rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px'
           }}>
           <StopWatch />
