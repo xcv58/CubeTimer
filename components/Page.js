@@ -40,6 +40,7 @@ class Page extends React.Component {
   onTouchStart = (event) => {
     const res = ReactDOM.findDOMNode(this.refs.content)
     if (!res.contains(event.target)) {
+      event.preventDefault()
       this.hold()
     }
   }
