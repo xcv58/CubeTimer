@@ -1,10 +1,7 @@
 import { action, observable } from 'mobx'
-import storedObservable from 'mobx-stored'
-
-const defaultProfile = { lapse: 0 }
+import * as LocalProfile from '../libs/LocalProfile'
 
 let store = null
-let observableProfile = null
 
 class Store {
   constructor (isServer) {
@@ -14,7 +11,7 @@ class Store {
   @observable running = false
   @observable standby = false
   @observable startTime = 0
-  @observable lapse = observableProfile === null ? 0 : observableProfile.lapse
+  @observable lapse = LocalProfile.get('lapse', 0)
 
   @action toggle = () => {
     if (this.running) {
@@ -38,7 +35,7 @@ class Store {
   @action stop = () => {
     this.running = false
     clearInterval(this.timer)
-    observableProfile.lapse = this.lapse
+    LocalProfile.assign({ lapse: this.lapse })
   }
 
   @action prepare = () => {
@@ -54,8 +51,8 @@ export function initStore (isServer) {
   if (isServer && typeof window === 'undefined') {
     return new Store(isServer)
   } else {
-    if (observableProfile === null && typeof localStorage !== 'undefined') {
-      observableProfile = storedObservable('profile', defaultProfile, 500)
+    if (typeof localStorage !== 'undefined') {
+      LocalProfile.initLocalProfile()
     }
     if (store === null) {
       store = new Store(false)
