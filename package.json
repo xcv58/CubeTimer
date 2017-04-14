@@ -5,10 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build && yarn appcache",
+    "build": "next build && node appcache.js",
     "start": "NODE_ENV=production node server.js",
     "deploy": "now --token=$NOW_TOKEN",
-    "appcache": "node appcache.js",
     "test": "yarn lint && yarn testonly",
     "testonly": "jest",
     "test-watch": "yarn testonly -- --watch",
