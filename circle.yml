@@ -13,6 +13,4 @@ dependencies:
 test:
   override:
     - yarn test
-    - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN ./node_modules/.bin/codeclimate-test-reporter < coverage/lcov.info
     - yarn build
-    - NOW_TOKEN=$NOW_TOKEN yarn deploy
