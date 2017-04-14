@@ -26,9 +26,6 @@ app.prepare()
   .then(_ => {
     const server = express()
 
-    // serve service worker
-    server.get('/sw.js', (req, res) => res.sendFile(path.resolve('./.next/sw.js')))
-
     server.get('/cache.appcache', (req, res) => {
       if (dev) {
         res.sendFile(path.resolve('./static/dev.appcache'))
