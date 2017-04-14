@@ -29,6 +29,14 @@ app.prepare()
     // serve service worker
     server.get('/sw.js', (req, res) => res.sendFile(path.resolve('./.next/sw.js')))
 
+    server.get('/cache.appcache', (req, res) => {
+      if (dev) {
+        res.sendFile(path.resolve('./static/dev.appcache'))
+      } else {
+        res.sendFile(path.resolve('./.next/cache.appcache'))
+      }
+    })
+
     server.get('*', (req, res) => handle(req, res))
 
     server.listen(3000, err => {
