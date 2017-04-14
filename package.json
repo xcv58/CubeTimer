@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "deploy": "now --token=$NOW_TOKEN",
-    "test": "npm run lint && npm run testonly",
+    "test": "yarn lint && yarn testonly",
     "testonly": "jest",
-    "test-watch": "npm run testonly -- --watch",
-    "lintfix": "npm run lint -- --fix",
+    "test-watch": "yarn testonly -- --watch",
+    "lintfix": "yarn lint -- --fix",
     "lint": "standard"
   },
   "dependencies": {
