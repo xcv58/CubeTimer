@@ -16,15 +16,10 @@ describe('Page', () => {
     expect(typeof instance.onTouchEnd).toBe('function')
   })
 
-  it('render StopWatch', () => {
+  it('render StopWatch and Records', () => {
     const store = {}
     const el = shallow(<Page store={store} />)
     expect(el.find(StopWatch).length).toBe(1)
-  })
-
-  it('render Records', () => {
-    const store = {}
-    const el = shallow(<Page store={store} />)
     expect(el.find(Records).length).toBe(1)
   })
 })
