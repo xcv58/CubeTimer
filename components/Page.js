@@ -72,7 +72,6 @@ class Page extends React.Component {
   }
 
   render () {
-    // TODO: render meaningful information for server side rendering, new UI design needed.
     return (
       <div style={{
         display: 'flex',
