@@ -21,7 +21,8 @@
     "mobx-stored": "^0.9.6",
     "next": "latest",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-ga": "^2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",

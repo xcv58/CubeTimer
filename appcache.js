@@ -11,7 +11,12 @@ const HEAD = [
   '/',
   '/static/style.css'
 ]
+const TAIL = [
+  '',
+  'NETWORK:',
+  '*'
+]
 
-fs.writeFile('.next/cache.appcache', [ ...HEAD, ...files ].join('\n'), (err) => {
+fs.writeFile('.next/cache.appcache', [ ...HEAD, ...files, ...TAIL ].join('\n'), (err) => {
   if (err) throw err
 })

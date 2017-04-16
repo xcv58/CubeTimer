@@ -4,12 +4,19 @@ import { isSpace } from '../libs/utils'
 import StopWatch from './StopWatch'
 import ReactDOM from 'react-dom'
 import Records from './Records'
+import ReactGA from 'react-ga'
+
+const initGA = () => {
+  ReactGA.initialize('UA-97492168-1', { debug: false })
+  ReactGA.pageview(window.location.path)
+}
 
 @inject('store')
 @inject('recordsStore')
 @observer
 class Page extends React.Component {
   componentDidMount () {
+    initGA()
     document.addEventListener('keydown', this.onKeyDown)
     document.addEventListener('keyup', this.onKeyUp)
     document.addEventListener('touchcancel', this.onTouchCancel, true)
@@ -58,9 +65,18 @@ class Page extends React.Component {
     const { recordsStore: { newRecord } } = this.props
     if (running) {
       newRecord(lapse, Date.now())
+      ReactGA.event({
+        category: 'Timer',
+        action: 'Stop',
+        value: lapse
+      })
       toggle()
     } else {
       prepare()
+      ReactGA.event({
+        category: 'Timer',
+        action: 'Hold'
+      })
     }
   }
 
@@ -68,6 +84,10 @@ class Page extends React.Component {
     const { store: { toggle, standby } } = this.props
     if (standby) {
       toggle()
+      ReactGA.event({
+        category: 'Timer',
+        action: 'Start'
+      })
     }
   }
 
