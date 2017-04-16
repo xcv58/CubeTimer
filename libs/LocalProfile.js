@@ -25,7 +25,6 @@ export const assign = (obj) => {
 
 export const get = (key, defaultValue) => {
   if (observableProfile !== null) {
-    console.log(key, observableProfile[key])
     return observableProfile[key] || defaultValue
   }
   return defaultValue
