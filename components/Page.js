@@ -8,7 +8,7 @@ import ReactGA from 'react-ga'
 
 const initGA = () => {
   ReactGA.initialize('UA-97492168-1', { debug: false })
-  ReactGA.pageview(window.location.path)
+  ReactGA.pageview(window.location.pathname)
 }
 
 @inject('store')
