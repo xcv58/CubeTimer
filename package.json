@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build && node appcache.js",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --token=$NOW_TOKEN",
+    "deploy": "now --token=$NOW_TOKEN --name=cube-timer-$CI",
     "test": "yarn lint && yarn testonly",
     "testonly": "jest",
     "test-watch": "yarn testonly -- --watch",
