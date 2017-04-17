@@ -30,9 +30,9 @@ export const get = (key, defaultValue) => {
   return defaultValue
 }
 
-export const initLocalProfile = (updateInterval = 500) => {
+export const initLocalProfile = (updateInterval = 500, createObservable = storedObservable) => {
   if (observableProfile === null) {
-    observableProfile = storedObservable('profile', defaultProfile, updateInterval)
+    observableProfile = createObservable('profile', defaultProfile, updateInterval)
   }
   return observableProfile
 }
