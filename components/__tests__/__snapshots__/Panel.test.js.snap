@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel render clear and call clear onClick 1`] = `
+<div
+  className="timebar"
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
+>
+  <span
+    onClick={[Function]}
+  >
+    clear
+  </span>
+</div>
+`;
+
+exports[`Panel render null if records is empty 1`] = `null`;
