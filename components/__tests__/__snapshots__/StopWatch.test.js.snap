@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StopWatch render correctly 1`] = `
+<div
+  className="timebar stopwatch"
+  style={
+    Object {
+      "color": "black",
+    }
+  }
+>
+  00:00:04
+</div>
+`;
+
+exports[`StopWatch render correctly 2`] = `
+<div
+  className="timebar stopwatch"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  00:00:04
+</div>
+`;
+
+exports[`StopWatch render correctly 3`] = `
+<div
+  className="timebar stopwatch"
+  style={
+    Object {
+      "color": "black",
+    }
+  }
+>
+  00:00:00
+</div>
+`;

@@ -3,6 +3,7 @@ import React from 'react'
 import StopWatch from '../StopWatch'
 import { getTimeObj } from '../../libs/utils'
 import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 describe('StopWatch', () => {
   it('render without crash', () => {
@@ -46,5 +47,26 @@ describe('StopWatch', () => {
     const { minute, second, millisecond } = getTimeObj(store.lapse)
 
     expect(el.text()).toBe(`${minute}:${second}:${millisecond}`)
+  })
+
+  it('render correctly', () => {
+    const store = { running: false, standby: false, lapse: 42 }
+    let tree = renderer.create(
+      <StopWatch store={store} />
+    ).toJSON()
+    expect(tree).toMatchSnapshot()
+
+    store.running = true
+    tree = renderer.create(
+      <StopWatch store={store} />
+    ).toJSON()
+    expect(tree).toMatchSnapshot()
+
+    store.running = false
+    store.lapse = 0
+    tree = renderer.create(
+      <StopWatch store={store} />
+    ).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })
