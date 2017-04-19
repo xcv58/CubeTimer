@@ -1,33 +1,28 @@
-import { action, observable } from 'mobx'
+import { action, computed, observable } from 'mobx'
 import * as LocalProfile from '../libs/LocalProfile'
 
 let store = null
 
 class RecordsStore {
   @observable records = [...LocalProfile.get('records', [])]
-  @observable max = LocalProfile.get('max', 0)
-  @observable min = LocalProfile.get('min', Infinity)
+  @computed get min () {
+    return Math.min(...this.records.map(x => x.lapse))
+  }
 
   @action newRecord = (lapse, timestamp) => {
     const record = { lapse, timestamp }
     this.records.unshift(record)
-
-    this.max = Math.max(this.max, lapse)
-    this.min = Math.min(this.min, lapse)
-
-    this.updateLocalProfile(record)
+    this.updateLocalProfile()
   }
 
   @action clear = () => {
     this.records = []
-    this.max = 0
-    this.min = Infinity
     this.updateLocalProfile()
   }
 
   updateLocalProfile = () => {
-    const { min, max, records } = this
-    LocalProfile.assign({ min, max, records })
+    const { records } = this
+    LocalProfile.assign({ records })
   }
 }
 
