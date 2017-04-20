@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Record render correct style 1`] = `
+<div
+  className="timebar"
+  style={undefined}
+>
+  <span
+    style={
+      Object {
+        "float": "left",
+        "width": 0,
+      }
+    }
+  >
+    1
+  </span>
+  00:00:04
+</div>
+`;
+
+exports[`Record render correct style 2`] = `
+<div
+  className="timebar"
+  style={
+    Object {
+      "color": "black",
+    }
+  }
+>
+  <span
+    style={
+      Object {
+        "float": "left",
+        "width": 0,
+      }
+    }
+  >
+    1
+  </span>
+  00:00:04
+</div>
+`;

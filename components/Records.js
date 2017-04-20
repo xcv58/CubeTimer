@@ -3,18 +3,17 @@ import { inject, observer } from 'mobx-react'
 import Panel from './Panel'
 import { getTimeObj } from '../libs/utils'
 
-const getStyle = ({ min, max, lapse }) => {
-  const isMin = min === lapse
-  if (isMin) {
+const getStyle = ({ min, lapse }) => {
+  if (min === lapse) {
     return { color: 'black' }
   }
 }
 
-const Record = ({ lapse, timestamp, min, max, index }) => {
+export const Record = ({ lapse, min, index }) => {
   const { minute, second, millisecond } = getTimeObj(lapse)
   const value = `${minute}:${second}:${millisecond}`
   return (
-    <div className='timebar' style={getStyle({ min, max, lapse })}>
+    <div className='timebar' style={getStyle({ min, lapse })}>
       <span style={{ float: 'left', width: 0 }}>{index}</span>
       {value}
     </div>
@@ -25,10 +24,10 @@ const Record = ({ lapse, timestamp, min, max, index }) => {
 @observer
 class Records extends React.Component {
   render () {
-    const { records, min, max } = this.props.recordsStore
+    const { records, min } = this.props.recordsStore
     const length = records.length
     const list = records.map((record, i) => (
-      <Record key={record.timestamp} {...{ min, max, index: length - i }} {...record} />
+      <Record key={record.timestamp} {...{ min, index: length - i }} {...record} />
     ))
     return (
       <div style={{
