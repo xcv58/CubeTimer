@@ -18,14 +18,6 @@ class Page extends React.Component {
     document.addEventListener('touchstart', this.onTouchStart, true)
   }
 
-  onTouchStart = (event) => {
-      // This is preventing zoom out in iOS Safari
-    if (event.touches.length > 1) {
-      event.preventDefault()
-    }
-    this.onTouchStart(event)
-  }
-
   onKeyDown = (event) => {
     if (isSpace(event)) {
       event.preventDefault()
@@ -41,6 +33,11 @@ class Page extends React.Component {
   }
 
   onTouchStart = (event) => {
+      // This is preventing zoom out in iOS Safari
+    if (event.touches.length > 1) {
+      event.preventDefault()
+      return
+    }
     const res = ReactDOM.findDOMNode(this.refs.content)
     if (!res.contains(event.target)) {
       event.preventDefault()

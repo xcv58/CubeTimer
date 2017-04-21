@@ -1,5 +1,6 @@
 /* global it, expect, describe */
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { spy, stub } from 'sinon'
 import Page from '../Page'
 import StopWatch from '../StopWatch'
@@ -47,6 +48,7 @@ describe('Page', () => {
   it('release call', () => {
     const toggle = spy()
     const ReactGA = { event: spy() }
+
     let el = shallow(<Page {...{ store: { toggle, standby: true }, ReactGA }} />)
     el.instance().release()
     expect(toggle.callCount).toBe(1)
@@ -59,5 +61,73 @@ describe('Page', () => {
     el.instance().release()
     expect(toggle.callCount).toBe(1)
     expect(ReactGA.event.callCount).toBe(1)
+  })
+
+  it('call store.cancel onTouchCancel', () => {
+    const store = { cancel: spy() }
+    const el = shallow(<Page {...{ store }} />)
+    el.instance().onTouchCancel()
+    expect(store.cancel.callCount).toBe(1)
+  })
+
+  it('onTouchEnd call this.release()', () => {
+    const el = shallow(<Page />)
+    el.instance().release = spy()
+    el.instance().onTouchEnd()
+    expect(el.instance().release.callCount).toBe(1)
+  })
+
+  it('onKeyUp', () => {
+    const event = { preventDefault: spy(), which: 32 }
+    const el = shallow(<Page />)
+    el.instance().release = spy()
+    el.instance().onKeyUp(event)
+    expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().release.callCount).toBe(1)
+
+    event.which = 42
+    el.instance().onKeyUp(event)
+    expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().release.callCount).toBe(1)
+  })
+
+  it('onKeyDown', () => {
+    const event = { preventDefault: spy(), which: 32 }
+    const el = shallow(<Page />)
+    el.instance().hold = spy()
+    el.instance().onKeyDown(event)
+    expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().hold.callCount).toBe(1)
+
+    event.which = 42
+    el.instance().onKeyDown(event)
+    expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().hold.callCount).toBe(1)
+  })
+
+  it('onTouchStart', () => {
+    const event = { preventDefault: spy(), touches: [] }
+
+    const el = shallow(<Page />)
+
+    const findDOMNode = stub(ReactDOM, 'findDOMNode')
+    const contains = stub()
+    findDOMNode.returns({ contains })
+    contains.returns(false)
+
+    el.instance().hold = spy()
+    el.instance().onTouchStart(event)
+    expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().hold.callCount).toBe(1)
+
+    contains.returns(true)
+    el.instance().onTouchStart(event)
+    expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().hold.callCount).toBe(1)
+
+    event.touches = [ 1, 2, 3 ]
+    el.instance().onTouchStart(event)
+    expect(event.preventDefault.callCount).toBe(2)
+    expect(el.instance().hold.callCount).toBe(1)
   })
 })
