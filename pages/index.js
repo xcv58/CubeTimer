@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'mobx-react'
 import { initStore, initRecordsStore } from '../stores'
 import Page from '../components/Page'
+import { initGA, ReactGA } from '../libs/utils'
 
 export default class CubeTimer extends React.Component {
   static getInitialProps ({ req }) {
@@ -18,7 +19,7 @@ export default class CubeTimer extends React.Component {
   render () {
     return (
       <Provider store={this.store} recordsStore={this.recordsStore}>
-        <Page />
+        <Page {...{ initGA, ReactGA }} />
       </Provider>
     )
   }

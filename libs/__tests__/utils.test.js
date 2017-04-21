@@ -1,5 +1,6 @@
 /* global it, expect, describe */
-import { getTimeObj, isSpace } from '../utils'
+import { spy } from 'sinon'
+import { getTimeObj, isSpace, initGA } from '../utils'
 
 describe('getTimeObj', () => {
   it('return an object', () => {
@@ -93,5 +94,19 @@ describe('isSpace', () => {
     const event = { which: 32 }
     expect(isSpace(event)).toBe(true)
     expect(isSpace({ which: 42 })).toBe(false)
+  })
+})
+
+describe('initGA', () => {
+  it('call initialize and pageview', () => {
+    const ga = { initialize: spy(), pageview: spy() }
+    initGA(ga)
+    expect(ga.initialize.callCount).toBe(1)
+    expect(ga.pageview.callCount).toBe(1)
+    expect(ga.pageview.args).toEqual([ [ window.location.pathname ] ])
+  })
+
+  it('throw expection', () => {
+    expect(initGA).toThrow()
   })
 })

@@ -1,3 +1,12 @@
+import ReactGA from 'react-ga'
+
+export { ReactGA }
+
+export const initGA = (GA = ReactGA) => {
+  GA.initialize('UA-97492168-1', { debug: false })
+  GA.pageview(window.location.pathname)
+}
+
 const pad = n => n < 10 ? `0${n}` : `${n}`
 
 export const getTimeObj = (lapse) => {

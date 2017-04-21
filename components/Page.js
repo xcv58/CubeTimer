@@ -4,30 +4,26 @@ import { isSpace } from '../libs/utils'
 import StopWatch from './StopWatch'
 import ReactDOM from 'react-dom'
 import Records from './Records'
-import ReactGA from 'react-ga'
-
-const initGA = () => {
-  ReactGA.initialize('UA-97492168-1', { debug: false })
-  ReactGA.pageview(window.location.pathname)
-}
 
 @inject('store')
 @inject('recordsStore')
 @observer
 class Page extends React.Component {
   componentDidMount () {
-    initGA()
+    this.props.initGA()
     document.addEventListener('keydown', this.onKeyDown)
     document.addEventListener('keyup', this.onKeyUp)
     document.addEventListener('touchcancel', this.onTouchCancel, true)
     document.addEventListener('touchend', this.onTouchEnd, true)
-    document.addEventListener('touchstart', (event) => {
+    document.addEventListener('touchstart', this.onTouchStart, true)
+  }
+
+  onTouchStart = (event) => {
       // This is preventing zoom out in iOS Safari
-      if (event.touches.length > 1) {
-        event.preventDefault()
-      }
-      this.onTouchStart(event)
-    }, true)
+    if (event.touches.length > 1) {
+      event.preventDefault()
+    }
+    this.onTouchStart(event)
   }
 
   onKeyDown = (event) => {
@@ -61,7 +57,7 @@ class Page extends React.Component {
   }
 
   hold = () => {
-    const { store: { running, prepare, toggle, lapse } } = this.props
+    const { store: { running, prepare, toggle, lapse }, ReactGA } = this.props
     const { recordsStore: { newRecord } } = this.props
     if (running) {
       newRecord(lapse, Date.now())
@@ -81,7 +77,7 @@ class Page extends React.Component {
   }
 
   release = () => {
-    const { store: { toggle, standby } } = this.props
+    const { store: { toggle, standby }, ReactGA } = this.props
     if (standby) {
       toggle()
       ReactGA.event({
