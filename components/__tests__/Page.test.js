@@ -77,31 +77,27 @@ describe('Page', () => {
     expect(el.instance().release.callCount).toBe(1)
   })
 
-  it('onKeyUp', () => {
+  it('onKeyUp & onKeyDown', () => {
     const event = { preventDefault: spy(), which: 32 }
     const el = shallow(<Page />)
     el.instance().release = spy()
-    el.instance().onKeyUp(event)
-    expect(event.preventDefault.callCount).toBe(1)
-    expect(el.instance().release.callCount).toBe(1)
-
-    event.which = 42
-    el.instance().onKeyUp(event)
-    expect(event.preventDefault.callCount).toBe(1)
-    expect(el.instance().release.callCount).toBe(1)
-  })
-
-  it('onKeyDown', () => {
-    const event = { preventDefault: spy(), which: 32 }
-    const el = shallow(<Page />)
     el.instance().hold = spy()
-    el.instance().onKeyDown(event)
+
+    el.instance().onKeyUp(event)
     expect(event.preventDefault.callCount).toBe(1)
+    expect(el.instance().release.callCount).toBe(1)
+
+    el.instance().onKeyDown(event)
+    expect(event.preventDefault.callCount).toBe(2)
     expect(el.instance().hold.callCount).toBe(1)
 
     event.which = 42
+    el.instance().onKeyUp(event)
+    expect(event.preventDefault.callCount).toBe(2)
+    expect(el.instance().release.callCount).toBe(1)
+
     el.instance().onKeyDown(event)
-    expect(event.preventDefault.callCount).toBe(1)
+    expect(event.preventDefault.callCount).toBe(2)
     expect(el.instance().hold.callCount).toBe(1)
   })
 
