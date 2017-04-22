@@ -130,4 +130,46 @@ describe('Page', () => {
     expect(event.preventDefault.callCount).toBe(2)
     expect(el.instance().hold.callCount).toBe(1)
   })
+
+  it('hold call prepare when not running', () => {
+    const ReactGA = { event: spy() }
+    const prepare = spy()
+    const el = shallow(
+      <Page {...{
+        store: { prepare, running: false },
+        recordsStore: {},
+        ReactGA
+      }} />
+    )
+    el.instance().hold()
+    expect(prepare.callCount).toBe(1)
+    expect(ReactGA.event.args).toEqual([
+      [ { category: 'Timer', action: 'Hold' } ]
+    ])
+  })
+
+  it('hold call newRecord and toggle if it is running', () => {
+    const ReactGA = { event: spy() }
+    const toggle = spy()
+    const newRecord = spy()
+    const lapse = 42
+    const el = shallow(
+      <Page {...{
+        store: { toggle, lapse, running: true },
+        recordsStore: { newRecord },
+        ReactGA
+      }} />
+    )
+    el.instance().hold()
+    expect(newRecord.callCount).toBe(1)
+    expect(newRecord.args[0][0]).toBe(lapse)
+    expect(toggle.callCount).toBe(1)
+    expect(ReactGA.event.args).toEqual([
+      [{
+        category: 'Timer',
+        action: 'Stop',
+        value: lapse
+      }]
+    ])
+  })
 })
