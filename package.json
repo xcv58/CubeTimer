@@ -32,6 +32,7 @@
     "babel-preset-react": "^6.24.1",
     "codeclimate-test-reporter": "^0.4.1",
     "enzyme": "^2.8.2",
+    "jasmine-check": "^1.0.0-rc.0",
     "jest": "^19.0.2",
     "now": "^4.11.2",
     "react-addons-test-utils": "^15.5.1",

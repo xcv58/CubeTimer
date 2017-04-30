@@ -1,11 +1,13 @@
-/* global it, expect, describe */
+/* global it, expect, describe, jasmine */
 import { spy } from 'sinon'
 import { getTimeObj, isSpace, initGA } from '../utils'
+import { install } from 'jasmine-check'
+install()
 
 describe('getTimeObj', () => {
   it('return an object', () => {
     const res = getTimeObj()
-    expect(typeof res).toBe('object')
+    expect(res).toEqual(jasmine.any(Object))
   })
 
   it('return correct millisecond', () => {

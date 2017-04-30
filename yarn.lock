@@ -268,7 +268,7 @@ babel-code-frame@^6.16.0, babel-code-frame@^6.20.0, babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@6.24.0:
+babel-core@6.24.0, babel-core@^6.0.0:
   version "6.24.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.24.0.tgz#8f36a0a77f5c155aed6f920b844d23ba56742a02"
   dependencies:
@@ -292,7 +292,7 @@ babel-core@6.24.0:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-core@^6.0.0, babel-core@^6.24.1:
+babel-core@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.24.1.tgz#8c428564dce1e1f41fb337ec34f4c3b022b5ad83"
   dependencies:
@@ -3293,6 +3293,12 @@ istanbul-reports@^1.0.2:
   dependencies:
     handlebars "^4.0.3"
 
+jasmine-check@^1.0.0-rc.0:
+  version "1.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/jasmine-check/-/jasmine-check-1.0.0-rc.0.tgz#117728c150078ecf211986c5f164275b71e937a4"
+  dependencies:
+    testcheck "^1.0.0-rc"
+
 jest-changed-files@^19.0.2:
   version "19.0.2"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-19.0.2.tgz#16c54c84c3270be408e06d2e8af3f3e37a885824"
@@ -4600,15 +4606,9 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.5.7:
+prop-types@15.5.7, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.7"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.7.tgz#231c4f29cdd82e355011d4889386ca9059544dd1"
-  dependencies:
-    fbjs "^0.8.9"
-
-prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@~15.5.7:
-  version "15.5.8"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
     fbjs "^0.8.9"
 
@@ -5530,6 +5530,10 @@ test-exclude@^4.0.3:
     object-assign "^4.1.0"
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
+
+testcheck@^1.0.0-rc:
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/testcheck/-/testcheck-1.0.0-rc.2.tgz#11356a25b84575efe0b0857451e85b5fa74ee4e4"
 
 text-encoding@0.6.4:
   version "0.6.4"
