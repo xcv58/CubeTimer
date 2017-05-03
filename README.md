@@ -1,3 +1,5 @@
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/xcv58/CubeTimer)
+
 # CubeTimer
 [![CircleCI](https://circleci.com/gh/xcv58/CubeTimer.svg?style=svg)](https://circleci.com/gh/xcv58/CubeTimer)
 [![Build Status](https://travis-ci.org/xcv58/CubeTimer.svg?branch=master)](https://travis-ci.org/xcv58/CubeTimer)
