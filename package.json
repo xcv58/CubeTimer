@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "express": "^4.15.3",
-    "mobx": "^3.1.9",
+    "mobx": "^3.1.10",
     "mobx-react": "^4.1.8",
     "mobx-stored": "^0.9.6",
     "next": "latest",
@@ -34,10 +34,10 @@
     "enzyme": "^2.8.2",
     "jasmine-check": "^1.0.0-rc.0",
     "jest": "^20.0.3",
-    "now": "^5.3.3",
+    "now": "^6.1.1",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
-    "sinon": "^2.2.0",
+    "sinon": "^2.3.1",
     "standard": "^10.0.2"
   },
   "standard": {
