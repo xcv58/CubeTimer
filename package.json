@@ -15,11 +15,12 @@
     "lint": "standard"
   },
   "dependencies": {
+    "auth0-js": "^8.9.3",
     "express": "^4.15.4",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",
     "mobx-stored": "^0.9.6",
-    "next": "^3.0.3",
+    "next": "^3.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-ga": "^2.2.0"
@@ -34,10 +35,10 @@
     "enzyme": "^2.9.1",
     "jasmine-check": "^1.0.0-rc.0",
     "jest": "^20.0.4",
-    "now": "^7.3.0",
+    "now": "^7.4.0",
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^15.6.1",
-    "sinon": "^3.2.0",
+    "sinon": "^3.2.1",
     "standard": "^10.0.3"
   },
   "standard": {
