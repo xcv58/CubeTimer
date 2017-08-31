@@ -22,7 +22,7 @@ export const Record = ({ lapse, min, index }) => {
 
 @inject('recordsStore')
 @observer
-class Records extends React.Component {
+export default class Records extends React.Component {
   render () {
     const { records, min } = this.props.recordsStore
     const length = records.length
@@ -48,5 +48,3 @@ class Records extends React.Component {
     )
   }
 }
-
-export default Records

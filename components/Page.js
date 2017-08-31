@@ -8,7 +8,7 @@ import Records from './Records'
 @inject('store')
 @inject('recordsStore')
 @observer
-class Page extends React.Component {
+export default class Page extends React.Component {
   componentDidMount () {
     this.props.initGA()
     document.addEventListener('keydown', this.onKeyDown)
@@ -106,5 +106,3 @@ class Page extends React.Component {
     )
   }
 }
-
-export default Page

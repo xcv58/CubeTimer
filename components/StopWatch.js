@@ -4,7 +4,7 @@ import { getTimeObj } from '../libs/utils'
 
 @inject('store')
 @observer
-class StopWatch extends React.Component {
+export default class StopWatch extends React.Component {
   render () {
     const { lapse, running, standby, isServer } = this.props.store
     const { minute, second, millisecond } = getTimeObj(lapse)
@@ -17,5 +17,3 @@ class StopWatch extends React.Component {
     )
   }
 }
-
-export default StopWatch

@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react'
 
 @inject('recordsStore')
 @observer
-class Panel extends React.Component {
+export default class Panel extends React.Component {
   render () {
     const { recordsStore: { clear, records } } = this.props
     if (records.length < 1) {
@@ -21,5 +21,3 @@ class Panel extends React.Component {
     )
   }
 }
-
-export default Panel
