@@ -7,7 +7,7 @@ import Button from 'material-ui/Button'
 @observer
 export default class Panel extends React.Component {
   clear = () => {
-    const { recordsStore, store }  = this.props
+    const { recordsStore, store } = this.props
     recordsStore.clear()
     store.clear()
   }
