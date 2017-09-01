@@ -45,6 +45,12 @@ class Store {
   @action cancel = () => {
     this.standby = false
   }
+
+  @action clear = () => {
+    if (!this.running) {
+      this.lapse = 0
+    }
+  }
 }
 
 export function initStore (isServer) {

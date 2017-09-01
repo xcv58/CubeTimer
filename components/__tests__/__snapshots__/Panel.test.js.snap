@@ -10,12 +10,38 @@ exports[`Panel render clear and call clear onClick 1`] = `
     }
   }
 >
-  <span
+  <button
+    className="MuiButtonBase-root-15 MuiButton-root-1"
+    disabled={false}
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+    tabIndex="0"
+    type="button"
   >
-    clear
-  </span>
+    <span
+      className="MuiButton-label-3"
+    >
+      Clear
+    </span>
+    <span
+      className="MuiTouchRipple-root-17"
+    />
+  </button>
 </div>
 `;
 
-exports[`Panel render null if records is empty 1`] = `null`;
+exports[`Panel render null if records is empty and stopwatch is running or lapse is 0 1`] = `null`;
