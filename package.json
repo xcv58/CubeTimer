@@ -10,8 +10,8 @@
     "deploy": "now --token=$NOW_TOKEN --name=cube-timer-$CI",
     "test": "yarn lint && yarn testonly",
     "testonly": "jest",
-    "test-watch": "yarn testonly -- --watch",
-    "lintfix": "yarn lint -- --fix",
+    "test-watch": "yarn testonly --watch",
+    "lintfix": "yarn lint --fix",
     "lint": "standard"
   },
   "dependencies": {
