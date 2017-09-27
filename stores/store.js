@@ -35,7 +35,7 @@ class Store {
   @action stop = () => {
     this.running = false
     clearInterval(this.timer)
-    LocalProfile.assign({ lapse: this.lapse })
+    this.updateLocalLapse()
   }
 
   @action prepare = () => {
@@ -49,7 +49,13 @@ class Store {
   @action clear = () => {
     if (!this.running) {
       this.lapse = 0
+      this.updateLocalLapse()
     }
+  }
+
+  updateLocalLapse = () => {
+    const { lapse } = this
+    LocalProfile.assign({ lapse })
   }
 }
 
