@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
-    "babel-jest": "^20.0.3",
+    "babel-jest": "^21.2.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -38,7 +38,7 @@
     "jasmine-check": "^1.0.0-rc.0",
     "jest": "^21.2.1",
     "now": "^8.3.7",
-    "react-addons-test-utils": "^15.6.2",
+    "react-addons-test-utils": "16.0.0-alpha.3",
     "react-test-renderer": "^16.0.0",
     "sinon": "^4.0.0",
     "standard": "^10.0.3"
