@@ -29,7 +29,7 @@ exports[`Panel render clear and call clear onClick 1`] = `
         "width": "100%",
       }
     }
-    tabIndex="0"
+    tabIndex={0}
     type="button"
   >
     <span

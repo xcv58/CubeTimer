@@ -7,10 +7,12 @@ import StopWatch from '../StopWatch'
 import Records from '../Records'
 import { shallow } from 'enzyme'
 
+const props = { initGA: spy() }
+
 describe('Page', () => {
   it('has onKeyDown, onKeyUp, onTouchStart, onTouchEnd', () => {
     const store = { isServer: false }
-    const el = shallow(<Page store={store} />)
+    const el = shallow(<Page store={store} {...props} />)
     const instance = el.instance()
     expect(typeof instance.onKeyDown).toBe('function')
     expect(typeof instance.onKeyUp).toBe('function')
@@ -20,7 +22,7 @@ describe('Page', () => {
 
   it('render StopWatch and Records', () => {
     const store = {}
-    const el = shallow(<Page store={store} />)
+    const el = shallow(<Page store={store} {...props} />)
     expect(el.find(StopWatch).length).toBe(1)
     expect(el.find(Records).length).toBe(1)
   })
@@ -30,7 +32,6 @@ describe('Page', () => {
     const initGA = spy()
     const addEventListener = stub(document, 'addEventListener')
     const el = shallow(<Page {...{ store, initGA }} />)
-    el.instance().componentDidMount()
 
     expect(initGA.callCount).toBe(1)
 
@@ -49,7 +50,7 @@ describe('Page', () => {
     const toggle = spy()
     const ReactGA = { event: spy() }
 
-    let el = shallow(<Page {...{ store: { toggle, standby: true }, ReactGA }} />)
+    let el = shallow(<Page {...{ store: { toggle, standby: true }, ReactGA }} {...props} />)
     el.instance().release()
     expect(toggle.callCount).toBe(1)
     expect(ReactGA.event.callCount).toBe(1)
@@ -57,7 +58,7 @@ describe('Page', () => {
       [{ category: 'Timer', action: 'Start' }]
     ])
 
-    el = shallow(<Page {...{ store: { toggle, standby: false }, ReactGA }} />)
+    el = shallow(<Page {...{ store: { toggle, standby: false }, ReactGA }} {...props} />)
     el.instance().release()
     expect(toggle.callCount).toBe(1)
     expect(ReactGA.event.callCount).toBe(1)
@@ -65,13 +66,13 @@ describe('Page', () => {
 
   it('call store.cancel onTouchCancel', () => {
     const store = { cancel: spy() }
-    const el = shallow(<Page {...{ store }} />)
+    const el = shallow(<Page {...{ store }} {...props} />)
     el.instance().onTouchCancel()
     expect(store.cancel.callCount).toBe(1)
   })
 
   it('onTouchEnd call this.release()', () => {
-    const el = shallow(<Page />)
+    const el = shallow(<Page {...props} />)
     el.instance().release = spy()
     el.instance().onTouchEnd()
     expect(el.instance().release.callCount).toBe(1)
@@ -79,7 +80,7 @@ describe('Page', () => {
 
   it('onKeyUp & onKeyDown', () => {
     const event = { preventDefault: spy(), which: 32 }
-    const el = shallow(<Page />)
+    const el = shallow(<Page {...props} />)
     el.instance().release = spy()
     el.instance().hold = spy()
 
@@ -104,7 +105,7 @@ describe('Page', () => {
   it('onTouchStart', () => {
     const event = { preventDefault: spy(), touches: [] }
 
-    const el = shallow(<Page />)
+    const el = shallow(<Page {...props} />)
 
     const findDOMNode = stub(ReactDOM, 'findDOMNode')
     const contains = stub()
@@ -135,7 +136,7 @@ describe('Page', () => {
         store: { prepare, running: false },
         recordsStore: {},
         ReactGA
-      }} />
+      }} {...props} />
     )
     el.instance().hold()
     expect(prepare.callCount).toBe(1)
@@ -154,7 +155,7 @@ describe('Page', () => {
         store: { toggle, lapse, running: true },
         recordsStore: { newRecord },
         ReactGA
-      }} />
+      }} {...props} />
     )
     el.instance().hold()
     expect(newRecord.callCount).toBe(1)

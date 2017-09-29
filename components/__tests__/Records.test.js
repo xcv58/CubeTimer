@@ -16,7 +16,7 @@ describe('Record', () => {
 
   it('render correct style', () => {
     let el = shallow(<Record {...{ lapse: 42, min: 1, index: 1 }} />)
-    expect(el.find('div').is({ style: undefined })).toBe(true)
+    expect(el.find('div').props().style).toBe(undefined)
     let tree = renderer.create(
       <Record {...{ lapse: 42, min: 1, index: 1 }} />
     ).toJSON()
@@ -49,6 +49,6 @@ describe('Records', () => {
     }
     const props = { recordsStore }
     const el = shallow(<Records {...props} />)
-    expect(el.find(Record).length, recordsStore.records.length)
+    expect(el.find(Record).length).toBe(recordsStore.records.length)
   })
 })
