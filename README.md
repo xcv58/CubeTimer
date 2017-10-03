@@ -10,3 +10,44 @@
 [![Code Climate](https://codeclimate.com/github/xcv58/CubeTimer/badges/gpa.svg)](https://codeclimate.com/github/xcv58/CubeTimer)
 [![Test Coverage](https://codeclimate.com/github/xcv58/CubeTimer/badges/coverage.svg)](https://codeclimate.com/github/xcv58/CubeTimer/coverage)
 [![Issue Count](https://codeclimate.com/github/xcv58/CubeTimer/badges/issue_count.svg)](https://codeclimate.com/github/xcv58/CubeTimer)
+
+# Development
+
+## Requirements
+[`node.js`, `npm`](https://github.com/creationix/nvm#installation), and [`yarn`](https://yarnpkg.com/en/)
+
+## Install
+
+```bash
+yarn
+```
+
+## Local development
+
+```bash
+yarn dev
+```
+
+## Local server
+
+```bash
+yarn start
+```
+
+## Deployment
+
+```bash
+yarn deploy
+```
+
+## Test
+
+```bash
+yarn test
+```
+
+Watch mode:
+
+```bash
+yarn test-watch
+```
