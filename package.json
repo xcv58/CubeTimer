@@ -15,16 +15,16 @@
     "lint": "standard"
   },
   "dependencies": {
-    "auth0-js": "^8.9.3",
+    "auth0-js": "^8.10.1",
     "express": "^4.15.4",
-    "material-ui": "^1.0.0-beta.12",
-    "mobx": "^3.2.2",
-    "mobx-react": "^4.2.2",
+    "material-ui": "^0.19.4",
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.3",
     "mobx-stored": "^0.9.6",
-    "next": "4.0.0-beta.2",
+    "next": "^4.0.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-ga": "^2.2.0"
+    "react-ga": "^2.3.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
