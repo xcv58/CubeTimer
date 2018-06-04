@@ -1,16 +1,9 @@
 {
   "env": {
     "test": {
-      "presets": [
-        "es2015",
-        "next/babel"
-      ]
+      "presets": ["es2015", "next/babel"]
     }
   },
-  "presets": [
-    "next/babel"
-  ],
-  "plugins": [
-    "transform-decorators-legacy"
-  ]
+  "presets": ["next/babel"],
+  "plugins": ["transform-decorators-legacy", "transform-class-properties"]
 }
