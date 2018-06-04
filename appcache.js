@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const stats = JSON.parse(fs.readFileSync('.next/build-stats.json'))
+const stats = JSON.parse(fs.readFileSync('.next/build-manifest.json'))
 
 const files = Object.entries(stats).map(([ file, { hash } ]) => {
   return `/_next/${hash}/${file}`
