@@ -9,7 +9,7 @@
     "start": "NODE_ENV=production node server.js",
     "deploy": "now --token=$NOW_TOKEN --name=cube-timer-$CI",
     "test": "yarn lint && yarn testonly",
-    "testonly": "jest",
+    "testonly": "NODE_ENV=test jest",
     "test-watch": "yarn testonly --watch",
     "lintfix": "yarn lint --fix",
     "lint": "standard"
@@ -38,6 +38,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "jasmine-check": "^1.0.0-rc.0",
     "jest": "^23.1.0",
+    "jest-localstorage-mock": "^2.2.0",
     "now": "^11.2.1",
     "react-addons-test-utils": "16.0.0-alpha.3",
     "react-test-renderer": "^16.4.0",
@@ -49,8 +50,6 @@
   },
   "jest": {
     "collectCoverage": true,
-    "setupFiles": [
-      "./test_setup.js"
-    ]
+    "setupFiles": ["./test_setup.js"]
   }
 }
