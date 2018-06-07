@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import Button from 'material-ui/Button'
+import Button from '@material-ui/core/Button'
 
 @inject('store')
 @inject('recordsStore')
@@ -18,13 +18,19 @@ export default class Panel extends React.Component {
       return null
     }
     return (
-      <div className='timebar' style={{
-        display: 'flex',
-        justifyContent: 'center'
-      }}>
-        <Button onClick={this.clear}
+      <div
+        className='timebar'
+        style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <Button
+          onClick={this.clear}
+          color='secondary'
           disabled={running}
-          style={{ width: '100%' }}>
+          style={{ width: '100%' }}
+        >
           Clear
         </Button>
       </div>

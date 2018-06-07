@@ -1,8 +1,8 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
+import ReactDOM from 'react-dom'
 import { isSpace } from '../libs/utils'
 import StopWatch from './StopWatch'
-import ReactDOM from 'react-dom'
 import Records from './Records'
 
 @inject('store')
@@ -18,22 +18,22 @@ export default class Page extends React.Component {
     document.addEventListener('touchstart', this.onTouchStart, true)
   }
 
-  onKeyDown = (event) => {
+  onKeyDown = event => {
     if (isSpace(event)) {
       event.preventDefault()
       this.hold()
     }
   }
 
-  onKeyUp = (event) => {
+  onKeyUp = event => {
     if (isSpace(event)) {
       event.preventDefault()
       this.release()
     }
   }
 
-  onTouchStart = (event) => {
-      // This is preventing zoom out in iOS Safari
+  onTouchStart = event => {
+    // This is preventing zoom out in iOS Safari
     if (event.touches.length > 1) {
       event.preventDefault()
       return
@@ -86,19 +86,24 @@ export default class Page extends React.Component {
 
   render () {
     return (
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '1rem'
-      }}>
-        <div ref='content'
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '1rem'
+        }}
+      >
+        <div
+          ref='content'
           style={{
             background: '#FFF',
             color: '#d9d9d9',
-            boxShadow: 'rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px'
-          }}>
+            boxShadow:
+              'rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px'
+          }}
+        >
           <StopWatch />
           <Records />
         </div>
