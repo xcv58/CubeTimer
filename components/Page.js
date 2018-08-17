@@ -33,7 +33,7 @@ export default class Page extends React.Component {
   }
 
   onTouchStart = (event) => {
-      // This is preventing zoom out in iOS Safari
+    // This is preventing zoom out in iOS Safari
     if (event.touches.length > 1) {
       event.preventDefault()
       return
