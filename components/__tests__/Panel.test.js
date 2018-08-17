@@ -4,7 +4,7 @@ import Panel from '../Panel'
 import { spy } from 'sinon'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
-import Button from 'material-ui/Button'
+import Button from '@material-ui/core/Button'
 
 describe('Panel', () => {
   it(
