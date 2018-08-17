@@ -11,7 +11,7 @@ exports[`Panel render clear and call clear onClick 1`] = `
   }
 >
   <button
-    className="MuiButtonBase-root-15 MuiButton-root-1"
+    className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -22,23 +22,23 @@ exports[`Panel render clear and call clear onClick 1`] = `
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
     onTouchEnd={[Function]}
+    onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role="button"
     style={
       Object {
         "width": "100%",
       }
     }
-    tabIndex={0}
+    tabIndex="0"
     type="button"
   >
     <span
-      className="MuiButton-label-3"
+      className="MuiButton-label-2"
     >
       Clear
     </span>
     <span
-      className="MuiTouchRipple-root-17"
+      className="MuiTouchRipple-root-30"
     />
   </button>
 </div>

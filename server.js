@@ -16,6 +16,8 @@ const path = require('path')
 const next = require('next')
 const mobxReact = require('mobx-react')
 
+global.localStorage = {}
+global.sessionStorage = {}
 mobxReact.useStaticRendering(true)
 
 const dev = process.env.NODE_ENV !== 'production'
