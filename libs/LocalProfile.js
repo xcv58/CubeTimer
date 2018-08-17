@@ -1,4 +1,4 @@
-import storedObservable from 'mobx-stored'
+import { localStored } from 'mobx-stored'
 
 const defaultProfile = {
   lapse: 0,
@@ -30,7 +30,7 @@ export const get = (key, defaultValue) => {
   return defaultValue
 }
 
-export const initLocalProfile = (updateInterval = 500, createObservable = storedObservable) => {
+export const initLocalProfile = (updateInterval = 500, createObservable = localStored) => {
   if (observableProfile === null) {
     observableProfile = createObservable('profile', defaultProfile, updateInterval)
   }
