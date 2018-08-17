@@ -5578,9 +5578,9 @@ normalize-scroll-left@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-scroll-left/-/normalize-scroll-left-0.1.2.tgz#6b79691ba79eb5fb107fa5edfbdc06b55caee2aa"
 
-now@^8.3.7:
-  version "8.3.10"
-  resolved "https://registry.yarnpkg.com/now/-/now-8.3.10.tgz#13b0dc1b8651284d5c345bc969d664d11c7885e8"
+now@^11.3.10:
+  version "11.3.10"
+  resolved "https://registry.yarnpkg.com/now/-/now-11.3.10.tgz#ec0512d4ff53a8b9529eb3ac07e16ce2cffe2ac7"
 
 "npm-package-arg@^3.0.0 || ^4.0.0 || ^5.0.0":
   version "5.1.2"
