@@ -1,4 +1,6 @@
 import React from 'react'
+import { Container } from 'next/app'
+import Head from 'next/head'
 import { Provider } from 'mobx-react'
 import { initStore, initRecordsStore } from '../stores'
 import Page from '../components/Page'
@@ -18,9 +20,15 @@ export default class CubeTimer extends React.Component {
 
   render () {
     return (
-      <Provider store={this.store} recordsStore={this.recordsStore}>
-        <Page {...{ initGA, ReactGA }} />
-      </Provider>
+      <Container>
+        <Head>
+          <title>Rubik's Cube Timer</title>
+        </Head>
+
+        <Provider store={this.store} recordsStore={this.recordsStore}>
+          <Page {...{ initGA, ReactGA }} />
+        </Provider>
+      </Container>
     )
   }
 }

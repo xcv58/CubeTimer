@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({minute, second, millisecond}) => (
+export default ({ minute, second, millisecond }) => (
   <div style={{
     display: 'inline-block',
     maxWidth: '100vw',

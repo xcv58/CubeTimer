@@ -10,10 +10,12 @@ import { shallow } from 'enzyme'
 const props = { initGA: spy() }
 
 describe('Page', () => {
+  const recordsStore = { records: [] }
+
   it('has onKeyDown, onKeyUp, onTouchStart, onTouchEnd', () => {
     const store = { isServer: false }
-    const el = shallow(<Page store={store} {...props} />)
-    const instance = el.instance()
+    const el = shallow(<Page {...{ store, recordsStore }} {...props} />)
+    const instance = el.dive().dive().instance()
     expect(typeof instance.onKeyDown).toBe('function')
     expect(typeof instance.onKeyUp).toBe('function')
     expect(typeof instance.onTouchStart).toBe('function')
@@ -22,7 +24,7 @@ describe('Page', () => {
 
   it('render StopWatch and Records', () => {
     const store = {}
-    const el = shallow(<Page store={store} {...props} />)
+    const el = shallow(<Page {...{ store, recordsStore }} {...props} />).dive().dive()
     expect(el.find(StopWatch).length).toBe(1)
     expect(el.find(Records).length).toBe(1)
   })
@@ -31,7 +33,7 @@ describe('Page', () => {
     const store = {}
     const initGA = spy()
     const addEventListener = stub(document, 'addEventListener')
-    const el = shallow(<Page {...{ store, initGA }} />)
+    const el = shallow(<Page {...{ store, recordsStore, initGA }} />).dive().dive()
 
     expect(initGA.callCount).toBe(1)
 
@@ -50,7 +52,7 @@ describe('Page', () => {
     const toggle = spy()
     const ReactGA = { event: spy() }
 
-    let el = shallow(<Page {...{ store: { toggle, standby: true }, ReactGA }} {...props} />)
+    let el = shallow(<Page {...{ store: { toggle, standby: true }, recordsStore, ReactGA }} {...props} />).dive().dive()
     el.instance().release()
     expect(toggle.callCount).toBe(1)
     expect(ReactGA.event.callCount).toBe(1)
@@ -58,7 +60,7 @@ describe('Page', () => {
       [{ category: 'Timer', action: 'Start' }]
     ])
 
-    el = shallow(<Page {...{ store: { toggle, standby: false }, ReactGA }} {...props} />)
+    el = shallow(<Page {...{ store: { toggle, standby: false }, recordsStore, ReactGA }} {...props} />).dive().dive()
     el.instance().release()
     expect(toggle.callCount).toBe(1)
     expect(ReactGA.event.callCount).toBe(1)
@@ -66,13 +68,13 @@ describe('Page', () => {
 
   it('call store.cancel onTouchCancel', () => {
     const store = { cancel: spy() }
-    const el = shallow(<Page {...{ store }} {...props} />)
+    const el = shallow(<Page {...{ store, recordsStore }} {...props} />).dive().dive()
     el.instance().onTouchCancel()
     expect(store.cancel.callCount).toBe(1)
   })
 
   it('onTouchEnd call this.release()', () => {
-    const el = shallow(<Page {...props} />)
+    const el = shallow(<Page {...{ store: {}, recordsStore }} {...props} />).dive().dive()
     el.instance().release = spy()
     el.instance().onTouchEnd()
     expect(el.instance().release.callCount).toBe(1)
@@ -80,7 +82,7 @@ describe('Page', () => {
 
   it('onKeyUp & onKeyDown', () => {
     const event = { preventDefault: spy(), which: 32 }
-    const el = shallow(<Page {...props} />)
+    const el = shallow(<Page {...{ store: {}, recordsStore }} {...props} />).dive().dive()
     el.instance().release = spy()
     el.instance().hold = spy()
 
@@ -105,7 +107,7 @@ describe('Page', () => {
   it('onTouchStart', () => {
     const event = { preventDefault: spy(), touches: [] }
 
-    const el = shallow(<Page {...props} />)
+    const el = shallow(<Page {...{ store: {}, recordsStore }} {...props} />).dive().dive()
 
     const findDOMNode = stub(ReactDOM, 'findDOMNode')
     const contains = stub()
@@ -134,10 +136,10 @@ describe('Page', () => {
     const el = shallow(
       <Page {...{
         store: { prepare, running: false },
-        recordsStore: {},
+        recordsStore,
         ReactGA
       }} {...props} />
-    )
+    ).dive().dive()
     el.instance().hold()
     expect(prepare.callCount).toBe(1)
     expect(ReactGA.event.args).toEqual([
@@ -156,7 +158,7 @@ describe('Page', () => {
         recordsStore: { newRecord },
         ReactGA
       }} {...props} />
-    )
+    ).dive().dive()
     el.instance().hold()
     expect(newRecord.callCount).toBe(1)
     expect(newRecord.args[0][0]).toBe(lapse)

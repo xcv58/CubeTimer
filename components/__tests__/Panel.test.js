@@ -2,7 +2,7 @@
 import React from 'react'
 import Panel from '../Panel'
 import { spy } from 'sinon'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 import Button from '@material-ui/core/Button'
 
@@ -12,21 +12,21 @@ describe('Panel', () => {
     () => {
       const recordsStore = { records: [] }
       const store = { running: true, lapse: 0 }
-      let el = shallow(<Panel {...{ recordsStore, store }} />)
+      let el = mount(<Panel {...{ recordsStore, store }} />)
       expect(el).toBeTruthy()
-      expect(el.text()).toBe('')
-      el = shallow(<Panel {...{
+      expect(el.text()).toBe(null)
+      el = mount(<Panel {...{
         recordsStore,
         store: { running: false, lapse: 0 }
       }} />)
       expect(el).toBeTruthy()
-      expect(el.text()).toBe('')
-      el = shallow(<Panel {...{
+      expect(el.text()).toBe(null)
+      el = mount(<Panel {...{
         recordsStore,
         store: { running: true, lapse: 100 }
       }} />)
       expect(el).toBeTruthy()
-      expect(el.text()).toBe('')
+      expect(el.text()).toBe(null)
 
       const tree = renderer.create(
         <Panel {...{ recordsStore, store }} />
@@ -39,7 +39,7 @@ describe('Panel', () => {
     const store = { clear: spy() }
     const props = { store, recordsStore }
     const expectedText = 'Clear'
-    const el = shallow(<Panel {...props} />)
+    const el = mount(<Panel {...props} />)
     expect(el.find(Button).is({ children: expectedText })).toBe(true)
     expect(el.find(Button).exists()).toBe(true)
     expect(store.clear.callCount).toBe(0)

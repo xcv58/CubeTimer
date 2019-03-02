@@ -10,7 +10,6 @@ export default class MyDocument extends Document {
           <meta name='theme-color' content='#F5F5F5' />
           <link rel='manifest' href='static/manifest.json' />
           <link rel='stylesheet' type='text/css' href='/static/style.css' />
-          <title>Rubik's Cube Timer</title>
         </Head>
         <body>
           <Main />

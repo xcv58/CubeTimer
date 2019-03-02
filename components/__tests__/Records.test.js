@@ -35,7 +35,7 @@ describe('Records', () => {
   it('render Panel', () => {
     const recordsStore = { records: [] }
     const props = { recordsStore }
-    const el = shallow(<Records {...props} />)
+    const el = shallow(<Records {...props} />).dive()
     expect(el.find(Panel).exists()).toBe(true)
   })
 
@@ -48,7 +48,7 @@ describe('Records', () => {
       ]
     }
     const props = { recordsStore }
-    const el = shallow(<Records {...props} />)
+    const el = shallow(<Records {...props} />).dive()
     expect(el.find(Record).length).toBe(recordsStore.records.length)
   })
 })
