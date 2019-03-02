@@ -2,7 +2,6 @@
   "env": {
     "test": {
       "presets": [
-        "es2015",
         "next/babel"
       ]
     }
@@ -11,6 +10,7 @@
     "next/babel"
   ],
   "plugins": [
-    "transform-decorators-legacy"
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
   ]
 }
